@@ -1,7 +1,9 @@
 import React from 'react'
 import logo from './assets/logo.svg'
+import { useTranslation } from 'react-i18next'
 
 const App = () => {
+    const { t } = useTranslation()
     return (
         <div className="App">
             <header className="App-header">
@@ -15,7 +17,7 @@ const App = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn React
+                    {t('Learn React')}
                 </a>
             </header>
         </div>

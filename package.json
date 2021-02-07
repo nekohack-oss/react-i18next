@@ -12,8 +12,10 @@
     "test:w": "npm run test-cover -- --watch"
   },
   "dependencies": {
+    "i18next": "^19.7.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-i18next": "^11.7.2",
     "react-test-renderer": "^16.13.1"
   },
   "devDependencies": {
@@ -23,6 +25,7 @@
     "@babel/preset-env": "7.11.0",
     "@babel/preset-react": "7.10.4",
     "@nekohack/eslint-config-react": "0.3.0",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "26.0.10",
     "@types/node": "14.6.2",
     "@types/react": "16.9.48",
@@ -34,6 +37,8 @@
     "babel-jest": "^26.3.0",
     "babel-loader": "8.1.0",
     "css-loader": "4.2.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
     "eslint": "7.7.0",
     "file-loader": "6.0.0",
     "fork-ts-checker-webpack-plugin": "5.1.0",
@@ -69,10 +74,13 @@
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     "setupFiles": [
+      "<rootDir>/jest-setup.js",
       "<rootDir>/loadershim.js"
     ],
     "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy"
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
+      "react-i18next": "<rootDir>/__mocks__/react-i18next-mock.js"
     },
     "collectCoverageFrom": [
       "src/components/**/*.{ts,tsx}"
@@ -83,7 +91,7 @@
       "public"
     ],
     "transformIgnorePatterns": [
-      "node_modules"
+      "node_modules/(?!(gatsby)/)"
     ]
   }
 }
